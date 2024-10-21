@@ -14,7 +14,7 @@ import {
     Box
 } from '@mui/material';
 
-function UpdateList({ open, handleClose, selectedItem, updateItem }) {
+function UpdateList({open, handleClose, selectedItem, updateItem}) {
     const [newItem, setNewItem] = React.useState({
         id: selectedItem?.id || '', // Use optional chaining
         name: selectedItem?.name || '',
@@ -23,7 +23,7 @@ function UpdateList({ open, handleClose, selectedItem, updateItem }) {
 
     // Handle form changes
     const handleInputChange = (event) => {
-        const { name, value } = event.target;
+        const {name, value} = event.target;
         setNewItem((prevItem) => ({
             ...prevItem,
             [name]: value

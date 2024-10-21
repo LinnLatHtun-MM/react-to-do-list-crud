@@ -13,28 +13,27 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import AddIcon from '@mui/icons-material/Add';
-import { Button, Switch, Box } from '@mui/material';
+import {Button, Switch, Box} from '@mui/material';
 import AddList from './AddList';
 import UpdateList from './UpdateList';
-import ViewDialog from './ViewDialog';
-import { toDoLists } from '../../../dummy/toDoLists';
+import ViewList from './ViewList.js';
+import {toDoLists} from '../../../dummy/toDoLists';
 
 const columns = [
-    { id: 'id', label: 'id', minWidth: 170 },
-    { id: 'name', label: 'name', minWidth: 100 },
-    { id: 'completed', label: 'completed', minWidth: 100 },
-    { id: 'view', label: 'view', minWidth: 100 },
-    { id: 'edit', label: 'edit', minWidth: 100 },
-    { id: 'delete', label: 'delete', minWidth: 100 }
+    {id: 'id', label: 'id', minWidth: 170},
+    {id: 'name', label: 'name', minWidth: 100},
+    {id: 'completed', label: 'completed', minWidth: 100},
+    {id: 'view', label: 'view', minWidth: 100},
+    {id: 'edit', label: 'edit', minWidth: 100},
+    {id: 'delete', label: 'delete', minWidth: 100}
 ];
 
 
-
 function createData(id, name, completed) {
-    return { id, name, completed };
+    return {id, name, completed};
 }
 
-const initialData = toDoLists.map( (todo) => createData(todo.id, todo.name, todo.completed));
+const initialData = toDoLists.map((todo) => createData(todo.id, todo.name, todo.completed));
 
 export default function List() {
 
@@ -79,7 +78,7 @@ export default function List() {
     const handleToggleCompleted = (id) => {
         setRows((prevRows) =>
             prevRows.map((row) =>
-                row.id === id ? { ...row, completed: !row.completed } : row
+                row.id === id ? {...row, completed: !row.completed} : row
             )
         );
     };
@@ -111,18 +110,18 @@ export default function List() {
     };
 
     return (
-        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-            <Box display="flex" justifyContent="flex-end" sx={{ padding: 5 }}>
+        <Paper sx={{width: '100%', overflow: 'hidden'}}>
+            <Box display="flex" justifyContent="flex-end" sx={{padding: 5}}>
                 <Button
                     variant="contained"
                     color="primary"
-                    startIcon={<AddIcon />}
+                    startIcon={<AddIcon/>}
                     onClick={handleOpen}
                 >
                     Add Item
                 </Button>
             </Box>
-            <TableContainer sx={{ maxHeight: 440 }}>
+            <TableContainer sx={{maxHeight: 440}}>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                         <TableRow>
@@ -130,7 +129,7 @@ export default function List() {
                                 <TableCell
                                     key={column.id}
                                     align={column.align}
-                                    style={{ minWidth: column.minWidth }}
+                                    style={{minWidth: column.minWidth}}
                                 >
                                     {column.label}
                                 </TableCell>
@@ -149,22 +148,25 @@ export default function List() {
                                             checked={row.completed}
                                             onChange={() => handleToggleCompleted(row.id)}
                                             color="primary"
-                                            inputProps={{ 'aria-label': 'completed switch' }}
+                                            inputProps={{'aria-label': 'completed switch'}}
                                         />
                                     </TableCell>
                                     <TableCell>
-                                        <IconButton aria-label="view" color="success" onClick={() => handleViewOpen(row.id)}>
-                                            <VisibilityIcon />
+                                        <IconButton aria-label="view" color="success"
+                                                    onClick={() => handleViewOpen(row.id)}>
+                                            <VisibilityIcon/>
                                         </IconButton>
                                     </TableCell>
                                     <TableCell>
-                                        <IconButton aria-label="edit" color="primary" onClick={() => handleUpdateOpen(row.id)}>
-                                            <EditIcon />
+                                        <IconButton aria-label="edit" color="primary"
+                                                    onClick={() => handleUpdateOpen(row.id)}>
+                                            <EditIcon/>
                                         </IconButton>
                                     </TableCell>
                                     <TableCell>
-                                        <IconButton aria-label="delete" color="error" onClick={() => handleDelete(row.id)}>
-                                            <DeleteIcon />
+                                        <IconButton aria-label="delete" color="error"
+                                                    onClick={() => handleDelete(row.id)}>
+                                            <DeleteIcon/>
                                         </IconButton>
                                     </TableCell>
                                 </TableRow>
@@ -182,7 +184,7 @@ export default function List() {
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
 
-            <AddList open={open} handleClose={handleClose} addTodo={addTodo} />
+            <AddList open={open} handleClose={handleClose} addTodo={addTodo}/>
 
             <UpdateList
                 open={updateOpen}  // Control visibility of update dialog
@@ -194,7 +196,7 @@ export default function List() {
 
             {/* View Dialog */}
             {selectedItem && (
-                <ViewDialog
+                <ViewList
                     open={viewOpen}
                     handleClose={handleViewClose}
                     selectedItem={selectedItem}  // Pass the selected item

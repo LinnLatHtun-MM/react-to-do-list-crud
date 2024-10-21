@@ -3,9 +3,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Button, TextField } from '@mui/material';
+import {Button, TextField} from '@mui/material';
 
-function ViewDialog({ open, handleClose, selectedItem }) {
+function ViewList({open, handleClose, selectedItem}) {
     return (
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>View Item</DialogTitle>
@@ -53,4 +53,4 @@ function ViewDialog({ open, handleClose, selectedItem }) {
     );
 }
 
-export default ViewDialog;
+export default ViewList;
